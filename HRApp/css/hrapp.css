@@ -1,0 +1,103 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: GillSans, Calibri, Trebuchet, sans-serif; }
+
+html {
+  margin: 0px;
+  height: 100%;
+  width: 100%; }
+
+body {
+  margin: 0px;
+  min-height: 100%;
+  width: 100%; }
+
+.angular .editing-ang {
+  color: orange; }
+
+.roow {
+  height: 100%;
+  position: relative; }
+
+.full-page {
+  background: pink;
+  width: 100vw;
+  position: relative;
+  height: 100vh;
+  margin: 0; }
+  .full-page .navigation-area {
+    height: 100%;
+    background: #c4cece;
+    border-right: solid orange 3px; }
+    .full-page .navigation-area .user-image {
+      display: flex;
+      width: 100%;
+      justify-content: center; }
+    .full-page .navigation-area .user-profile-info {
+      text-align: center; }
+    .full-page .navigation-area .add-contact-btn {
+      width: 100%;
+      display: flex;
+      justify-content: center; }
+      .full-page .navigation-area .add-contact-btn button {
+        border: none;
+        padding: .3em 5em;
+        border-radius: 9px;
+        margin: auto; }
+  .full-page .content-area {
+    width: 100%;
+    height: 100%;
+    background: #f7f6f6; }
+    .full-page .content-area .row-one .cp-height {
+      height: 200px; }
+    .full-page .content-area .row-two .cp-height {
+      height: 300px;
+      overflow-y: auto; }
+    .full-page .content-area .card-panel {
+      margin: 0; }
+    .full-page .content-area .bdays {
+      margin: 2.1rem 0 .656rem 0; }
+  .full-page .contact-container {
+    padding-top: 0;
+    height: 200px; }
+    .full-page .contact-container .search-container {
+      height: 49px; }
+      .full-page .contact-container .search-container input[type="search"] {
+        position: static;
+        width: 100%;
+        z-index: 2; }
+    .full-page .contact-container .all-contacts {
+      overflow: auto;
+      height: 145px; }
+    .full-page .contact-container .item-list {
+      width: 100%;
+      display: block;
+      height: 53px;
+      float: left; }
+      .full-page .contact-container .item-list .user-image {
+        width: 80px;
+        float: left; }
+        .full-page .contact-container .item-list .user-image img {
+          width: 60%; }
+    .full-page .contact-container .description-text {
+      width: 80%;
+      float: left; }
+      .full-page .contact-container .description-text .user-name, .full-page .contact-container .description-text .user-position, .full-page .contact-container .description-text .user-email {
+        display: inline-block;
+        width: 27%;
+        padding: 1em 0; }
+  .full-page .birthday-container {
+    overflow: auto; }
+    .full-page .birthday-container .item-list {
+      width: 100%;
+      height: 60px;
+      float: left; }
+    .full-page .birthday-container .user-image {
+      width: 80px;
+      float: left; }
+      .full-page .birthday-container .user-image img {
+        width: 60%; }
+
+/*# sourceMappingURL=hrapp.css.map */

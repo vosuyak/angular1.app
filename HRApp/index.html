@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> 
+<html> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>HRApp</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+        <link rel="stylesheet" type="text/css" href="css/hrapp.css">
+    </head>
+    <body ng-app="hrApp">
+
+    <div class="full-page row"  ng-controller="mainCtrl">
+    <div class="roow">
+    <!--nav-->
+      <div class="col s12 m2 l3 navigation-area">
+            <div class="card-panel grey lighten-5 z-depth-1">
+                    <div class=" valign-wrapper">
+                        <div class="col s12 user-image">
+                        <img src="https://placeholdit.imgix.net/~text?txtsize=33&txt=60%C3%97150&w=60&h=60" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
+                        </div>
+                    </div>
+                    <div class="user-profile-info ">
+                        <p class="user-title">HR Manager</p>
+                        <!--<p class="user-name">Tracy Morgan</p>-->
+                        <div hello-world>  </div>
+                        <p>{{contact.firstName}}</p>
+                    </div>
+            </div>
+            <div class="card-panel" ng-click="post = !post">
+                <input ng-blur="editing = false;" ng-model="contact.fullName" type="text" placeholder="Full Name">
+                <input ng-change="learningNgChange()" ng-model="contact.jobTitle" type="text" placeholder="Job Title">
+                <input class="inputOne" ng-model="contact.email" type="text" placeholder="Email">
+                <input ng-model="contact.birthday" type="text" placeholder="Birthday: mm/dd/yyyy">
+            </div>
+                    <div class="add-contact-btn" id="add-contact-btn">
+                        <button ng-click="addContact()"  type="button">Add Staff</button>
+                    </div>
+            <h3 ng-show="post">Show</h3>
+            <h3 ng-hide="post">Hide</h3>
+      </div>
+    <!--nav end-->
+    <!--content-area-->
+      <div class="col s12 m9 l9 content-area">
+        <!--first-row-->
+            <div class="row row-one">
+                <div class="col s12 l8">
+                    <h4>Contact List</h4>
+                    <div class="card-panel cp-height contact-container">
+                        <!--search contact-->
+                        <div class="search-container">
+                            <input type="search" placeholder="Staff Directory" name="" value="" ng-model="searchBox">
+                        </div>
+                        <!--contacts-->
+                        <div class="all-contacts">
+                                <!--<div class="item-list" id="item-list">
+                                    <div class="user-image" id="user-image"> <img src="https://placeholdit.imgix.net/~text?txtsize=33&txt=60%C3%97150&w=60&h=60" alt="user image" class="circle responsive-img"></div>
+                                    <div class="description-text" id="description-text">
+                                        <div class="user-name " id="user-name">
+                                            <p>Tracy Parker</p>
+                                        </div>
+                                        <div class="user-position " id="user-position">
+                                            <p>Software Engineer</p>
+                                        </div>
+                                        <div class="user-email " id="user-email">
+                                            <p>company@company.com</p>
+                                        </div>
+                                    </div>
+                                </div>-->
+                        <!--ng-repeat-->
+                    
+                            <div  ng-repeat="contact in contacts | filter: searchBox" class="item-list" id="item-list">
+                                <div class="user-image" id="user-image"> 
+                                    <img src="https://placeholdit.imgix.net/~text?txtsize=33&txt=60%C3%97150&w=60&h=60" alt="user image" class="circle responsive-img">
+                                </div>
+                                <div class="description-text" id="description-text">
+                                    <div class="user-name " id="user-name">
+                                        <p ng-class="{'editing-ang':editing}">{{contact.fullName}}</p>
+                                    </div>
+                                    <div class="user-position " id="user-position">
+                                        <p>{{contact.jobTitle}}</p>
+                                    </div>
+                                    <div class="user-email " id="user-email">
+                                        <p>{{contact.email}}</p>
+                                        <!--<p ng-click="deleteContact(contact, $index)">X</p>-->
+                                    </div>
+                                </div>
+                             </div>                        
+                        
+                        <!--ng-repeat end-->
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 l4 ">
+                    <h5 class="bdays">Upcoming Birthdays</h5>                    
+                    <div class="card-panel cp-height birthday-container">
+                        <div class="item-list" id="item-list"  ng-repeat="contact in contacts">
+                            <div class="user-image" id="user-image"> <img src="https://placeholdit.imgix.net/~text?txtsize=33&txt=60%C3%97150&w=60&h=60" alt="user image" class="circle responsive-img"></div>
+                            <div class="description-text" id="description-text">
+                                <div class="user-name" id="user-name">
+                                    <p>{{contact.fullName}}</p>
+                                </div>
+                                <div class="birth-date" id="birth-date">
+                                    <p>{{contact.birthday}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>                
+            </div>
+        <!--first-row-end-->
+        <!--second-row-->
+            <div class="row row-two">
+                <div class="col s12 l6">
+                    <h5>Object Array</h5>                    
+                    <div class="card-panel cp-height">
+                     {{contacts}}   
+                    </div>
+                </div>
+                <div class="col s12 l6">
+                   >
+                </div>  
+            </div>
+        <!--second-row-end-->
+      </div>
+    </div>
+    <!--content end-->
+    </div>
+
+                                        <!--////////////////////////JS////////////////////////////-->
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/hello-world.js"></script>  
+    </body>
+</html>
